@@ -56,6 +56,16 @@ segment _TEXT public class=CODE
 			mov ax, _DATA
 			mov es, ax
 			in al, 60h
+
+			mov bh, al
+			in    al, 061h       
+			mov   bl, al
+			or    al, 080h
+			out   061h, al     
+			mov   al, bl
+			out   061h, al 
+			mov al, bh
+			
 			cmp al, 0e0h
 			jz .ignore
 			mov ah, 0
